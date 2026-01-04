@@ -2,14 +2,12 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 
-
 load_dotenv()
 
-
 def get_connection():
-return mysql.connector.connect(
-host=os.getenv("DB_HOST"),
-user=os.getenv("DB_USER"),
-password=os.getenv("DB_PASS"),
-database=os.getenv("DB_NAME")
-)
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST", "localhost"),
+        user=os.getenv("DB_USER", "root"),
+        password=os.getenv("DB_PASS", "root"),
+        database=os.getenv("DB_NAME", "ai_saas")
+    )
